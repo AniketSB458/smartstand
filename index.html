@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="instagram">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SmartStand-MADE BY 458TM</title>
+  <meta name="description" content="SmartStand is a portable and adjustable phone stand concept for studying, working, video calling and entertainment. Your Phone, Your Comfort, Anywhere!">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SmartStand — Your Phone, Your Comfort, Anywhere!">
+  <meta property="og:description" content="A portable, adjustable and affordable mobile stand concept for students, professionals, teachers and creators.">
+  <meta property="og:image" content="assets/og-image.svg">
+  <meta property="og:image:alt" content="SmartStand wordmark and tagline on a graphite background">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Inter + Space Grotesk (optional; system fonts are used as fallback) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+  <!-- Apply saved theme before first paint (prevents a flash) -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var t = localStorage.getItem('smartstand-theme');
+        var theme = (t === 'light') ? 'light' : 'instagram';
+        d.setAttribute('data-theme', theme);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'instagram' ? '#ffffff' : '#f6f7f9');
+      } catch (e) { /* storage unavailable: keep default */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <noscript>
+    <style>
+      .stage__canvas, .stage__controls, .product-controls { display: none !important; }
+      .stage__fallback { display: block !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Inline SVG sprite (Lucide-style icons + logo mark) -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="logo-mark" viewBox="0 0 32 32">
+      <rect width="32" height="32" rx="9" fill="#10141a" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+      <rect x="12" y="6" width="9" height="16" rx="2.5" transform="rotate(-14 16 22)" fill="var(--accent, #2c64f5)" stroke="none"/>
+      <rect x="7" y="23.5" width="18" height="3" rx="1.5" fill="#dde1e7" stroke="none"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol id="i-move" viewBox="0 0 24 24"><path d="m5 9-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+    <symbol id="i-angle" viewBox="0 0 24 24"><path d="M4 20h16M4 20 15 4M10 20a6 6 0 0 0-1.9-4.4"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0v4M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65M22 12.65l-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+  </svg>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header" id="site-header">
+    <div class="container header__inner">
+      <a class="brand" href="#home" aria-label="SmartStand — back to top of home">
+        <svg class="brand__mark" width="32" height="32" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <span class="brand__word">SmartStand</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav__list" id="primary-nav">
+          <li><a class="nav__link" href="#home">Home</a></li>
+          <li><a class="nav__link" href="#features">Features</a></li>
+          <li><a class="nav__link" href="#product">Our Product</a></li>
+          <li><a class="nav__link" href="#about">About</a></li>
+          <li><a class="nav__link" href="#contact">Contact</a></li>
+          <li class="nav__cta-mobile"><a class="btn btn--primary" href="#product">Explore Product</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <!-- Theme Toggle in Titlebar: Instagram Pink/White <-> Classic White/Gray -->
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to classic white and gray appearance" aria-pressed="true" title="Switch to Classic White &amp; Gray theme">
+          <svg class="icon icon--palette" aria-hidden="true"><use href="#i-palette"/></svg>
+        </button>
+
+        <a class="btn btn--primary btn--sm header__cta" href="#product">Explore Product</a>
+        <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+          <svg class="icon icon--open" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="home" aria-labelledby="hero-title" tabindex="-1">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Meet your everyday phone companion</p>
+          <h1 class="hero__title" id="hero-title">
+            <span>Your Phone.</span>
+            <span>Your Comfort.</span>
+            <span class="hero__title-accent">Anywhere.</span>
+          </h1>
+          <p class="hero__lead">Meet SmartStand, the portable and adjustable phone stand designed to make studying, working, video calling, and entertainment more comfortable.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#product">Explore SmartStand <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a class="btn btn--ghost" href="#contact">Contact Us</a>
+          </div>
+          <ul class="benefits" aria-label="Key benefits">
+            <li><span class="benefits__icon"><svg class="icon" aria-hidden="true"><use href="#i-angle"/></svg></span>Adjustable viewing</li>
+            <li><span class="benefits__icon"><svg class="icon" aria-hidden="true"><use href="#i-hand"/></svg></span>Hands-free convenience</li>
+            <li><span class="benefits__icon"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg></span>Portable design</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual">
+          <div class="stage stage--hero" id="hero-stage">
+            <canvas class="stage__canvas" id="hero-canvas" tabindex="0" role="img"
+              aria-label="Interactive 3D model of a smartphone on the SmartStand adjustable stand. Drag, or use the arrow keys, to rotate. Press Escape to reset."></canvas>
+            <img class="stage__fallback" src="assets/smartstand-illustration.svg" width="600" height="600" loading="lazy" decoding="async"
+              alt="Illustration of a smartphone resting on the SmartStand adjustable stand">
+            <div class="stage__controls">
+              <span class="stage__hint"><svg class="icon" aria-hidden="true"><use href="#i-move"/></svg> Drag to rotate</span>
+              <button class="chip-btn" id="hero-reset" type="button"><svg class="icon" aria-hidden="true"><use href="#i-rotate"/></svg> Reset view</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FEATURES ============================ -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <header class="section__head section__head--center reveal">
+          <p class="eyebrow">Designed for everyday life</p>
+          <h2 class="h2" id="features-title">Small Design. Everyday Difference.</h2>
+          <p class="section__lead">Simple features that make your phone easier to use at home, in class, or at work.</p>
+        </header>
+
+        <ul class="feature-grid">
+          <li class="reveal" style="--delay:0s">
+            <article class="feature-card tilt">
+              <span class="feature-card__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-angle"/></svg></span>
+              <h3 class="h3">Adjustable Viewing</h3>
+              <p>Tilt your phone to the angle that suits the moment: more upright for video calls and online lessons, or more relaxed for watching your favourite content.</p>
+            </article>
+          </li>
+          <li class="reveal" style="--delay:.1s">
+            <article class="feature-card tilt">
+              <span class="feature-card__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-briefcase"/></svg></span>
+              <h3 class="h3">Portable &amp; Foldable</h3>
+              <p>The compact, foldable concept is made to slip into a backpack and set up quickly on a desk, a study table, or wherever your day takes you.</p>
+            </article>
+          </li>
+          <li class="reveal" style="--delay:.2s">
+            <article class="feature-card tilt">
+              <span class="feature-card__icon"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-layers"/></svg></span>
+              <h3 class="h3">Stable Design</h3>
+              <p>Intended to support a compatible smartphone on a flat surface, so your hands stay free for notes, typing, cooking, or simply relaxing.</p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ PRODUCT ============================ -->
+    <section class="section section--graphite" id="product" aria-labelledby="product-title">
+      <div class="container">
+        <header class="section__head section__head--center reveal">
+          <p class="eyebrow">Our featured product</p>
+          <h2 class="h2" id="product-title">Meet Your New Everyday Essential.</h2>
+        </header>
+
+        <article class="product-card reveal" aria-labelledby="product-name">
+          <div class="product-card__visual">
+            <div class="stage stage--product" id="product-stage">
+              <canvas class="stage__canvas" id="product-canvas" tabindex="0" role="img"
+                aria-label="Interactive 3D preview of the Multi-Purpose Adjustable Mobile Stand. Drag, or use the arrow keys, to rotate."></canvas>
+              <img class="stage__fallback" src="assets/smartstand-illustration.svg" width="600" height="600" loading="lazy" decoding="async"
+                alt="Illustration of the Multi-Purpose Adjustable Mobile Stand holding a smartphone">
+            </div>
+            <div class="product-controls">
+              <div class="segmented" role="group" aria-label="Product view">
+                <button type="button" data-view="angle" aria-pressed="true">Angled</button>
+                <button type="button" data-view="front" aria-pressed="false">Front</button>
+                <button type="button" data-view="side" aria-pressed="false">Side</button>
+                <button type="button" data-view="back" aria-pressed="false">Back</button>
+              </div>
+              <div class="range">
+                <label for="angle-range">Stand angle</label>
+                <input type="range" id="angle-range" min="12" max="34" step="1" value="22" aria-describedby="angle-hint">
+                <output id="angle-out" for="angle-range">22°</output>
+              </div>
+              <p class="product-controls__note" id="angle-hint">Drag the model to rotate it, and use the slider to change how far the stand leans back. Concept render; final product may vary.</p>
+            </div>
+          </div>
+
+          <div class="product-card__body">
+            <h3 class="h3 product-card__name" id="product-name">Multi-Purpose Adjustable Mobile Stand</h3>
+            <p class="product-card__desc">Use your phone hands-free while attending online classes, joining video meetings, following recipes, or watching your favourite content.</p>
+
+            <div class="price" id="product-price">
+              <p class="price__value"><span class="price__currency" aria-hidden="true">₹</span><span class="sr-only">Rupees </span>100</p>
+              <p class="price__label">Estimated student-project price per unit</p>
+              <p class="price__note">This price is an estimate only and may change depending on materials, production, and delivery costs.</p>
+            </div>
+
+            <ul class="checklist" aria-label="Product benefits">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Adjustable angle</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Lightweight concept</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Easy to use</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Everyday utility</li>
+            </ul>
+
+            <button class="btn btn--primary btn--block" type="button" data-enquire="Multi-Purpose Adjustable Mobile Stand">
+              Ask About This Product <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================ ABOUT ============================ -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container about">
+        <div class="about__copy">
+          <header class="section__head reveal">
+            <p class="eyebrow">Our story</p>
+            <h2 class="h2" id="about-title">Simple Ideas. Better Everyday Experiences.</h2>
+            <p class="section__lead">SmartStand is a startup concept focused on making everyday smartphone use more convenient with a simple, useful, and affordable accessory.</p>
+          </header>
+
+          <div class="about__blocks">
+            <article class="about-block about-block--light reveal">
+              <h3 class="about-block__title">Our mission</h3>
+              <p>Offer practical accessories that make daily digital activities more comfortable.</p>
+            </article>
+            <article class="about-block about-block--dark reveal" style="--delay:.08s">
+              <h3 class="about-block__title">Who it's for</h3>
+              <p>Everyone who spends part of the day with a phone in front of them.</p>
+              <ul class="chips">
+                <li>Students</li><li>Teachers</li><li>Office workers</li><li>Content creators</li><li>Smartphone users</li>
+              </ul>
+            </article>
+            <article class="about-block about-block--blue reveal" style="--delay:.16s">
+              <h3 class="about-block__title">Our approach</h3>
+              <p>Listen to customer feedback and improve the design, durability, and value.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="about__visual reveal">
+          <figure class="about-visual tilt">
+            <img src="assets/smartstand-illustration.svg" width="600" height="600" loading="lazy" decoding="async"
+              alt="Side-view illustration of a smartphone leaning back on the SmartStand adjustable stand">
+            <figcaption>Concept illustration of the SmartStand idea</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CONTACT ============================ -->
+    <section class="section section--tight" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div class="contact-panel__copy">
+            <p class="eyebrow">Get in touch</p>
+            <h2 class="h2" id="contact-title">Have a question?</h2>
+            <p class="section__lead">Send an enquiry about SmartStand, request product details, or share your feedback.</p>
+            <p class="contact-panel__how">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <span>This form opens a ready-to-send enquiry draft directly on WhatsApp to <strong>+91 95118 09293</strong>. Review the message and press Send in WhatsApp!</span>
+            </p>
+          </div>
+
+          <form class="form" id="enquiry-form" action="https://wa.me/919511809293" method="get" target="_blank" novalidate>
+            <div class="form__grid">
+              <div class="field">
+                <label for="enquiry-name">Full name <span class="req" aria-hidden="true">*</span></label>
+                <input id="enquiry-name" name="name" type="text" autocomplete="name" placeholder="e.g. Aanya Patil" required maxlength="80" aria-describedby="name-error">
+                <p class="field__error" id="name-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="enquiry-email">Email address <span class="req" aria-hidden="true">*</span></label>
+                <input id="enquiry-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required maxlength="120" aria-describedby="email-error">
+                <p class="field__error" id="email-error" hidden></p>
+              </div>
+              <div class="field field--full">
+                <label for="enquiry-type">Enquiry type <span class="req" aria-hidden="true">*</span></label>
+                <select id="enquiry-type" name="type" required aria-describedby="type-error">
+                  <option value="">Select an enquiry type</option>
+                  <option>Product details</option>
+                  <option>Pricing information</option>
+                  <option>Bulk enquiry</option>
+                  <option>General question</option>
+                </select>
+                <p class="field__error" id="type-error" hidden></p>
+              </div>
+              <div class="field field--full">
+                <label for="enquiry-message">Message <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="enquiry-message" name="message" rows="5" placeholder="Tell us what you would like to know…" required maxlength="800" aria-describedby="message-error message-count"></textarea>
+                <div class="field__meta">
+                  <p class="field__error" id="message-error" hidden></p>
+                  <p class="field__count" id="message-count" aria-live="off">0 / 800</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" id="submit-btn" type="submit">
+                <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                <span class="btn__label">Chat on WhatsApp</span>
+              </button>
+              <button class="btn btn--ghost" id="copy-btn" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg> Copy enquiry text
+              </button>
+            </div>
+
+            <div class="form__status" id="form-status" role="status" aria-live="polite" tabindex="-1" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#home" aria-label="SmartStand — back to top of home">
+          <svg class="brand__mark" width="32" height="32" aria-hidden="true"><use href="#logo-mark"/></svg>
+          <span class="brand__word">SmartStand</span>
+        </a>
+        <p class="footer__tagline">Your Phone, Your Comfort, Anywhere!</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Quick navigation">
+        <h2 class="footer__heading">Explore</h2>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#product">Our Product</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Product and contact">
+        <h2 class="footer__heading">Product &amp; contact</h2>
+        <ul>
+          <li><a href="#product">Adjustable Mobile Stand</a></li>
+          <li><a href="#contact" data-prefill="Pricing information">Ask about pricing</a></li>
+          <li><a href="#contact" data-prefill="Bulk enquiry">Bulk enquiries</a></li>
+          <li><a href="#contact" data-prefill="General question">Send feedback</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer__col--end">
+        <a class="btn btn--ghost btn--sm" id="footer-top" href="#home"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg> Back to top</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> SmartStand.<br>MADE BY 458TM.</p>
+      <p>Prices shown are estimates and may change.</p>
+    </div>
+  </footer>
+
+  <!-- Floating back-to-top (appears after scrolling) -->
+  <button class="to-top" id="to-top" type="button" aria-label="Back to top" hidden>
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+  </button>
+
+  <!-- Three.js r149 (UMD build) is vendored locally: no CDN or network needed. -->
+  <script src="assets/vendor/three.min.js" defer></script>
+  <script src="js/three-scene.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
